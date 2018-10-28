@@ -5,7 +5,9 @@
   "author": "musa",
   "license": "MIT",
   "scripts": {
-    "build": "webpack --watch"
+    "serve": "live-server public/",
+    "build": "webpack",
+    "dev-server": "webpack-dev-server"
   },
   "dependencies": {
     "babel-preset-env": "1.5.2",
@@ -13,7 +15,8 @@
     "jquery": "^3.3.1",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
-    "webpack": "3.1.0"
+    "webpack": "3.1.0",
+    "webpack-dev-server": "2.5.1"
   },
   "devDependencies": {
     "babel-core": "6.26.0",
