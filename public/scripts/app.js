@@ -172,42 +172,30 @@ var Light = function (_React$Component6) {
                 "div",
                 null,
                 React.createElement(
-                    "table",
+                    "td",
                     null,
-                    React.createElement(
-                        "tbody",
-                        null,
-                        React.createElement(
-                            "tr",
-                            { key: this.props.light.id },
-                            React.createElement(
-                                "td",
-                                null,
-                                "Name: ",
-                                this.props.light.name,
-                                " "
-                            ),
-                            React.createElement(
-                                "td",
-                                null,
-                                "Colour: ",
-                                this.props.light.xy[0],
-                                this.props.light.xy[1],
-                                "  "
-                            ),
-                            React.createElement(
-                                "td",
-                                null,
-                                "On: ",
-                                this.props.light.on
-                            ),
-                            React.createElement(
-                                "td",
-                                null,
-                                "Reachable"
-                            )
-                        )
-                    )
+                    "Name: ",
+                    this.props.light.name,
+                    " "
+                ),
+                React.createElement(
+                    "td",
+                    null,
+                    "Colour: ",
+                    this.props.light.xy[0],
+                    this.props.light.xy[1],
+                    "  "
+                ),
+                React.createElement(
+                    "td",
+                    null,
+                    "On: ",
+                    this.props.light.on
+                ),
+                React.createElement(
+                    "td",
+                    null,
+                    "Reachable"
                 )
             );
         }
@@ -230,7 +218,7 @@ var Triggers = function (_React$Component7) {
         value: function render() {
             return React.createElement(
                 "div",
-                { id: "triggersContainer" },
+                null,
                 React.createElement(
                     "h1",
                     null,
@@ -289,37 +277,25 @@ var Trigger = function (_React$Component8) {
                 "div",
                 { id: "trigContainer" },
                 React.createElement(
-                    "table",
+                    "td",
                     null,
-                    React.createElement(
-                        "tbody",
-                        null,
-                        React.createElement(
-                            "tr",
-                            { key: this.props.trigger.key },
-                            React.createElement(
-                                "td",
-                                null,
-                                "Name: ",
-                                this.props.trigger.name,
-                                " "
-                            ),
-                            React.createElement(
-                                "td",
-                                null,
-                                "Colour: ",
-                                this.props.trigger.colour,
-                                "  "
-                            ),
-                            React.createElement(
-                                "td",
-                                null,
-                                "Effect: ",
-                                this.props.trigger.effect.toLocaleLowerCase(),
-                                "  "
-                            )
-                        )
-                    )
+                    "Name: ",
+                    this.props.trigger.name,
+                    " "
+                ),
+                React.createElement(
+                    "td",
+                    null,
+                    "Colour: ",
+                    this.props.trigger.colour,
+                    "  "
+                ),
+                React.createElement(
+                    "td",
+                    null,
+                    "Effect: ",
+                    this.props.trigger.effect.toLocaleLowerCase(),
+                    "  "
                 )
             );
         }
@@ -366,7 +342,11 @@ var TriggerClient = function (_React$Component9) {
                         "tbody",
                         null,
                         this.state.data.map(function (trigger, key) {
-                            return React.createElement(Trigger, { key: trigger, trigger: trigger });
+                            return React.createElement(
+                                "tr",
+                                { key: key },
+                                React.createElement(Trigger, { key: trigger, trigger: trigger })
+                            );
                         })
                     )
                 )
@@ -415,7 +395,11 @@ var LightsClient = function (_React$Component10) {
                         "tbody",
                         null,
                         this.state.data.map(function (light, key) {
-                            return React.createElement(Light, { key: light, light: light });
+                            return React.createElement(
+                                "tr",
+                                { key: key },
+                                React.createElement(Light, { key: light, light: light })
+                            );
                         })
                     )
                 )

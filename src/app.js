@@ -78,17 +78,10 @@ class Light extends React.Component {
     render() {
         return (
             <div>
-            <table>
-            <tbody>
-            <tr key = {this.props.light.id}>
                 <td>Name: {this.props.light.name} </td>
                 <td>Colour: {this.props.light.xy[0]}{this.props.light.xy[1]}  </td>
                 <td>On: {this.props.light.on}</td>
                 <td>Reachable</td>
-            </tr>
-                </tbody>
-                </table>
-
             </div>
         )
     }
@@ -97,7 +90,7 @@ class Light extends React.Component {
 class Triggers extends React.Component {
     render() {
         return (
-            <div id="triggersContainer">
+            <div>
             <h1>Trigger Container</h1>
             <TriggerClient />
             <h2>Trigger Form</h2>
@@ -139,15 +132,9 @@ class Trigger extends React.Component {
     render() {
         return (
             <div id="trigContainer">
-            <table>
-            <tbody>
-            <tr key = {this.props.trigger.key}>
                 <td>Name: {this.props.trigger.name} </td>
                 <td>Colour: {this.props.trigger.colour}  </td>
                 <td>Effect: {this.props.trigger.effect.toLocaleLowerCase()}  </td>
-            </tr>
-                </tbody>
-                </table>
             </div>
         );
     }
@@ -174,7 +161,9 @@ class TriggerClient extends React.Component{
                 <tbody>
                 {this.state.data.map(function (trigger, key) {
                     return (
-                          <Trigger key={trigger} trigger={trigger}/>
+                        <tr key = {key}> 
+                        <Trigger key={trigger} trigger={trigger}/>
+                        </tr>
                     );
                 })}
                 </tbody>
@@ -205,7 +194,9 @@ class LightsClient extends React.Component {
                     <tbody>
                     {this.state.data.map(function (light, key) {
                         return (
+                            <tr key = {key}>
                             <Light key= {light} light = {light}/>
+                            </tr>
                         );
                     })}
                     </tbody>
