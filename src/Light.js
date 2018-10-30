@@ -13,11 +13,21 @@ export default class Light extends React.Component {
     }
 
    handleClick(){
-       this.setState(() => {
-           return {
-               on: "false"
-           };
-       });
+
+        if(this.state.on === "true"){
+            this.setState(() => {
+                return {
+                    on: "false"
+                };
+            });
+        } else {
+            this.setState(() => {
+                return {
+                    on: "true"
+                };
+            });
+        }
+
     fetch('http://localhost:7077/lights', {
         mode: 'cors',
         method: 'post',
