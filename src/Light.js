@@ -13,7 +13,6 @@ export default class Light extends React.Component {
     }
 
    handleClick(){
-
         if(this.state.on === "true"){
             this.setState(() => {
                 return {
@@ -48,9 +47,9 @@ export default class Light extends React.Component {
                     <button onClick={(e) => this.handleClick()}>
                         Turn On/Off
                     </button>
-                <td>Name: {this.props.light.name} </td>
-                <td>Colour: {this.props.light.xy[0]}{this.props.light.xy[1]}  </td>
-                <td>On: {this.props.light.on}</td>
+                <td>Name: {this.state.name} </td>
+                <td>Colour: {this.state.xy[0]}{this.state.xy[1]}  </td>
+                <td>On: {this.state.on}</td>
                 <td>Reachable</td>
             </div>
         )

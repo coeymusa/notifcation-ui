@@ -3,22 +3,26 @@ import React from 'react';
 export class Trigger extends React.Component {
     constructor(props) {
         super(props)
+        this.state = {
+            id: this.props.trigger.id,
+            name: this.props.trigger.name,
+            colour: this.props.trigger.colour,
+            effect: this.props.trigger.effect
+        }
     }
 
-    toJson() {
-        console.log(
-            `"id": "${this.id}", "name": "${this.name}","colour": "${
-                this.colour
-                }","effect": "${this.effect}"`
-        );
-    }
+    removeTrigger(){
 
-    inactivateTrigger() {
-        this.setState(() => {
-            return {
-                active: "false"
-            };
-        });
+        fetch('http://localhost:7077/removeTrigger', {
+            mode: 'cors',
+            method: 'post',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(this.state)
+        }).then(res=>res.json())
+            .then(res => console.log(res));
     }
 
     activateTrigger() {
@@ -35,6 +39,7 @@ export class Trigger extends React.Component {
                 <td>Name: {this.props.trigger.name} </td>
                 <td>Colour: {this.props.trigger.colour}  </td>
                 <td>Effect: {this.props.trigger.effect.toLocaleLowerCase()}  </td>
+                <button onClick={(e) => this.removeTrigger()}>Remove Trigger</button>
             </div>
         );
     }
