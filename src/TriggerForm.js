@@ -3,28 +3,35 @@ import React from 'react';
 export default class TriggerForm extends React.Component {
   constructor(props) {
       super(props);
+      this.toJson = this.toJson.bind(this);
       this.clear = this.clear.bind(this);
+      this.state = {}
+
   }
 
+   toJson(newTrigger){
+     return(
+         `"id": "${this.newTrigger.id}", "name": "${this.newTrigger.name}","colour": "${this.newTrigger.colour}","effect": "${this.newTrigger.effect}"`
+      )
+  }
   onFormSubmit(e) {
-      e.preventDefault();
+
       const name = e.target.elements.nameOption.value;
       const effect = e.target.elements.effectOption.value;
       const colour = e.target.elements.colourOption.value;
-      const newTrigger = new Trigger(null, name, colour, effect, null);
-      if (name) {
-          newTrigger.name = name.toString();
-          e.target.elements.nameOption.value = "";
-      }
-      if (effect) {
-          newTrigger.effect = effect.toString();
-          e.target.elements.effectOption.value = "";
-      }
-      if (colour) {
-          newTrigger.colour = colour.toString();
-          e.target.elements.colourOption.value = "";
-      }
-      alert(newTrigger.toString());
+      const newTrigger = `{"name": "${name}","effect": "${effect}","colour": ${colour} }`;
+
+      fetch('http://localhost:7077/addtrigger', {
+          mode: 'cors',
+          method: 'post',
+          headers: {
+              'Accept': 'application/json, text/plain, */*',
+              'Content-Type': 'application/json'
+          },
+          body: newTrigger
+      }).then(res => res.json())
+          .then(res => console.log(newTrigger));
+
   }
 
   clear() {
